@@ -1,39 +1,50 @@
 const express = require('express');
 const router = express.Router();
-
 const path = require('path');
-const uuid = require('uuid');
+
+const fs = require('fs')
+
+const noteDB = require('../db/db.json');
+const { randomUUID } = require('crypto');
 
 
-const fs = require('fs');
-let notes;
+router.get('/notes', (req,res) =>  {
+    res.send(noteDB);
+})
 
-// var obj;
-// fs.readFile('file', 'utf8', function (err, data) {
-//   if (err) throw err;
-//   obj = JSON.parse(data);
+router.post('/notes', (req,res) => {
+
+    
+    // If you want the file to be valid JSON, you have to open your file, parse the JSON, 
+    // append your new result to the array, 
+    // transform it back into a string and save it again.
+    let newNote = req.body;
+    newNote.id = randomUUID();
+    noteDB.push(newNote);
+    res.send(newNote);
+});
+
+// router.delete('/notes:id',(req,res) => {
+//     const id = req.params;
+//     console.log(id);
+//     res.end();
 // });
 
 
-// Read the file and send to the callback
-
+//CRUD FUNCTIONALITY
 
 // Write the callback function
-function handleFile(err, notes) {
-    if (err) throw err
-    notes = JSON.parse(notes)
-    console.log(notes);
-    return notes;
-}
+// function handleFile(err, notes) {
+//     if (err) throw err
+    
+//     console.log(notes);
+//     let noteList = [];
+//     noteList.concat(JSON.parse(notes));
+//     return noteList;
+// }
 
-router.get('/notes', (req,res,) => {
-    console.log('I am getting notes...');
-    fs.readFile(path.join(__dirname,'../db/db.json'), handleFile)
-   // console.log(;
-    res.end;
-});
 
-// getNoteFile = () => {
+// getNoteFile = () => 
 //     JSON.parse(fs.readFileSync('../db/db.json','utf8'));
 // }
 // router.post('./api/notes',(req,res) => res.send)

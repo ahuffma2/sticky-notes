@@ -1,4 +1,7 @@
+[
 {
-	"Title": "Hello Yes I am a Note Title",
-	"Text" : "Hello i am text"
+	"title": "Hello Yes I am a Note Title",
+	"text" : "Hello i am text",
+	"id" : "1"
 }
+]
