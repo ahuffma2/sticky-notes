@@ -6,6 +6,7 @@ const fs = require('fs')
 
 let noteDB = require('../db/db.json');
 const { randomUUID } = require('crypto');
+const nodemon = require('nodemon');
 
 
 router.get('/notes', (req,res) =>  {
@@ -20,14 +21,16 @@ router.post('/notes', (req,res) => {
 });
 
 router.delete('/notes/:id',(req,res) => {
-    const id = req.params; //THIS IS GOOD DONT CHANGE
-    let newNoteDB = noteDB;
-    console.log('I am the new Note DB' + newNoteDB);
+    const id = req.params.id;
 
-     console.log(newNoteDB.filter((note) => {
-         newNoteDB = note.id !== '1';
-     }))
-    res.end();
+    //Returns a new array that includes all except for the object that has the same ID
+    let newNoteList = noteDB
+        .filter(note => {
+           return note.id !== id;
+        });
+
+    noteDB = newNoteList;
+    res.send(newNoteList);
 });
 
 module.exports = router;
