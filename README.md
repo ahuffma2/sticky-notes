@@ -2,16 +2,16 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
   This is a web application that allows you to create personal notes and save them to a server.
+  
+  ![Note Image](https://github.com/ahuffma2/sticky-notes/blob/main/resources/READMEexample.JPG)
 
-  ##Table of Contents
+  ## Table of Contents
 
   -[Installation](#installation)
 
   -[Usage](#usage)
 
   -[Contribution](#contribution)
-
-  -[Test Instructions](#test-instructions)
 
   
   --------
@@ -26,10 +26,6 @@
   ## Contribution
   Anyone can fork this repo to use as their own
   
-  --------
-  ## Test Instructions
-  N/A 
-
   --------
   ## Questions 
 
